@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="outter-wrapper">
+        <h1>MyTaskList</h1>
+        <div class="container">
+            <div class="leftcol">
+                <label id="tasklabel" for="task">What I have to do today</label>
+                <br>
+                <textarea name="task" id="task" cols="45" rows="6" placeholder="Create a new task"></textarea>
+                <br>
+                <button type="submit" id="submitBtn">Add Task</button>
+            </div>
+            <div class="rightcol">
+                <h2>Todo List</h2>
+                <ul id="todoList">
+                    <li class="seperateItems listItem">Speed Up Enclave's Mobile view
+                        <a href="#" class="deleteIcon">X</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+}
+
+.outter-wrapper{
+    text-align: center;
+}
+
+h1{
+    font-size:3rem;
+}
+/* Add task section */
+.leftcol #tasklabel{
+    font-size:1.2rem;
+    display: inline-block;
+    margin-bottom:5px;
+}
+
+.leftcol #task{
+    border-radius:3px;
+}
+
+.leftcol textarea{
+    padding:2px;
+    font-size:1rem;
+}
+
+.leftcol #submitBtn{
+    padding:7px 8px;
+    font-size: 1rem;
+    border-radius: 3px;
+    margin-top:5px;
+    background-color: rgb(17,107,107);
+    border-color: rgb(17,107,107);
+    color:white;
+}
+
+/* Todo List section */
+h2{
+    font-size:2.4rem;
+}
+
+.rightcol #todoList{
+    background-color: rgb(17,107,107);
+    border-radius: 2px;
+    list-style-type: none;
+    text-align: left;
+    color:white;
+}
+
+.rightcol .listItem{
+    padding:5px 5px 10px;
+}
+
+.rightcol .deleteIcon{
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding-right:5px;
+    color:#fff;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.rightcol .seperateItems{
+    display:flex;
+    justify-content: space-between;
+}
