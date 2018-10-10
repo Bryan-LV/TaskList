@@ -15,6 +15,11 @@ function setUpEventListeners(){
 
 // function to call for adding new task
 function addNewTask(){
+    // validate form
+    let value = inputValue.value === '';
+    if(value){
+        return;
+    }
     // call new li element
     createLiElement();
     //append to task list
@@ -61,6 +66,7 @@ let addNewTaskToLS = function (){
 // Delete task
 function deleteTask(e){
     if(e.target.classList.contains('deleteIcon')){
-        e.target.parentElement.remove();
+        let el = e.target.parentElement;
+        el.remove();
     }
 }
