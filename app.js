@@ -8,8 +8,8 @@ setUpEventListeners();
 function setUpEventListeners(){
     // add new task
     submitBtn.addEventListener('click', addNewTask);
-    // delete task
-
+    // delete task 
+    todoList.addEventListener('click', deleteTask);
 }
 
 
@@ -53,4 +53,14 @@ let addNewTaskToLS = function (){
 
     tasks.push(inputValue.value);
     localStorage.setItem('tasks',JSON.stringify(tasks));
+}
+
+
+
+
+// Delete task
+function deleteTask(e){
+    if(e.target.classList.contains('deleteIcon')){
+        e.target.parentElement.remove();
+    }
 }
