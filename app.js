@@ -9,6 +9,8 @@ function setUpEventListeners() {
     // add new task
     submitBtn.addEventListener('click', addNewTask);
     inputValue.addEventListener('keyup', addNewTaskTwo);
+    // Retreive tasks from local storage
+    document.addEventListener('DOMContentLoaded', retreiveTasks)
     // delete task 
     todoList.addEventListener('click', deleteTask);
 }
@@ -45,6 +47,30 @@ function addNewTaskTwo(e) {
         addNewTaskToLS();
         inputValue.value = '';
     }
+}
+
+function retreiveTasks() {
+    // get tasks from ls
+    let tasks
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    // create li from each task
+    tasks.forEach(function (task) {
+        // append to DOM
+        let li = document.createElement('li');
+        li.textContent = task;
+        li.classList.add('listItem', 'seperateItems');
+        let anchor = document.createElement('a');
+        anchor.textContent = ' X';
+        anchor.classList.add('deleteIcon');
+
+        li.appendChild(anchor);
+        todoList.appendChild(li);
+    });
+
 }
 
 // create new li with input value
@@ -100,12 +126,10 @@ let removeFromLs = function (e) {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
     tasks.forEach(function (task, index) {
-        console.log(task, index);
         // splice out index matching text content
-        if (task.textContent === e.target.textContent) {
-            console.log(true);
+        if (task === e.target.parentElement.textContent) {
+            console.log(e.target.parentElement.textContent);
         }
-
-    })
-
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
