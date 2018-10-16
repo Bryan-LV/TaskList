@@ -2,6 +2,7 @@
 let inputValue = document.querySelector('#task');
 let submitBtn = document.querySelector('#submitBtn');
 let todoList = document.querySelector('#todoList');
+let clearTasks = document.querySelector('#clearTasks');
 
 setUpEventListeners();
 // Submit event listener 
@@ -13,6 +14,9 @@ function setUpEventListeners() {
     document.addEventListener('DOMContentLoaded', retreiveTasks)
     // delete task 
     todoList.addEventListener('click', deleteTask);
+    // clear Tasks
+    clearTasks.addEventListener('click',clearAllTasks);
+
 }
 
 
@@ -135,4 +139,13 @@ let removeFromLs = function (e) {
         }
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Clear All Tasks
+function clearAllTasks(){
+    let listItems = document.querySelectorAll('li');
+    listItems.forEach(function(item, index){
+        item.remove();
+    })
+    localStorage.clear();
 }

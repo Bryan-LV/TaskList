@@ -65,3 +65,13 @@ h2{
     display:flex;
     justify-content: space-between;
 }
+
+.rightcol #clearTasks{
+    background-color: rgb(0,0,0);
+    border-color: rgb(17,107,107);
+    border-radius: 3px;
+    padding:8px;
+    font-size: 1rem;
+    color:white;
+
+}
