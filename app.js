@@ -64,7 +64,7 @@ function retreiveTasks() {
         li.textContent = task;
         li.classList.add('listItem', 'seperateItems');
         let anchor = document.createElement('a');
-        anchor.textContent = ' X';
+        anchor.innerHTML = '<i class="far fa-trash-alt"></i>';
         anchor.classList.add('deleteIcon');
 
         li.appendChild(anchor);
@@ -79,7 +79,7 @@ let createLiElement = function () {
     li.textContent = inputValue.value;
     li.classList.add('listItem', 'seperateItems');
     let anchor = document.createElement('a');
-    anchor.textContent = ' X';
+    anchor.innerHTML = '<i class="far fa-trash-alt"></i>';
     anchor.classList.add('deleteIcon');
 
     li.appendChild(anchor);
@@ -110,10 +110,10 @@ let addNewTaskToLS = function () {
 
 // Delete task
 function deleteTask(e) {
-    if (e.target.classList.contains('deleteIcon')) {
-        let el = e.target.parentElement;
-        el.remove();
+    if (e.target.parentElement.classList.contains('deleteIcon')) {
         removeFromLs(e);
+        let el = e.target.parentElement.parentElement;
+        el.remove();
     }
 }
 
@@ -125,10 +125,13 @@ let removeFromLs = function (e) {
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
+    
+    // target = li
+    let target = e.target.parentElement.parentElement;
     tasks.forEach(function (task, index) {
         // splice out index matching text content
-        if (task === e.target.parentElement.textContent) {
-            console.log(e.target.parentElement.textContent);
+        if(task == target.textContent){
+            tasks.splice(index,1);
         }
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
