@@ -3,6 +3,7 @@ let inputValue = document.querySelector('#task');
 let submitBtn = document.querySelector('#submitBtn');
 let todoList = document.querySelector('#todoList');
 let clearTasks = document.querySelector('#clearTasks');
+let filter = document.querySelector('#filter');
 
 setUpEventListeners();
 // Submit event listener 
@@ -16,6 +17,8 @@ function setUpEventListeners() {
     todoList.addEventListener('click', deleteTask);
     // clear Tasks
     clearTasks.addEventListener('click',clearAllTasks);
+    // filter through tasks
+    filter.addEventListener('keyup', filterTasks);
 
 }
 
@@ -148,4 +151,18 @@ function clearAllTasks(){
         item.remove();
     })
     localStorage.clear();
+}
+
+// Filter through tasks
+function filterTasks(e){
+    let list = document.querySelectorAll('li');
+    // loop through items and display match, hide others
+    let filterValue  = filter.value.toLowerCase();
+    list.forEach(function(task){ 
+        if(task.textContent.toLowerCase().includes(filterValue)){
+            task.style.display = 'flex';
+        } else{
+            task.style.display = 'none';
+        }
+    })
 }
